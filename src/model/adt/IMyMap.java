@@ -1,10 +1,10 @@
 package model.adt;
 
-import exceptions.KeyNotFoundException;
+import exceptions.ExpressionException;
 
 public interface IMyMap<K, V> {
-    V get(K key) throws KeyNotFoundException;
+    V get(K key) throws ExpressionException;
     void insert(K key, V value);
     boolean contains(K key);
-    void remove(K key) throws KeyNotFoundException;
+    void remove(K key) throws ExpressionException;
 }

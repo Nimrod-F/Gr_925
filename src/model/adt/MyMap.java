@@ -1,6 +1,6 @@
 package model.adt;
 
-import exceptions.KeyNotFoundException;
+import exceptions.ExpressionException;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -12,9 +12,9 @@ public class MyMap<K, V> implements IMyMap<K, V> {
         map = new HashMap<K, V>();
     }
 
-    public V get(K key) throws KeyNotFoundException {
+    public V get(K key) throws ExpressionException {
         if (!map.containsKey(key)) {
-            throw new KeyNotFoundException("Key not found");
+            throw new ExpressionException("Key not found");
         }
         return map.get(key);
     }
@@ -27,9 +27,9 @@ public class MyMap<K, V> implements IMyMap<K, V> {
         return map.containsKey(key);
     }
 
-    public void remove(K key) throws KeyNotFoundException {
+    public void remove(K key) throws ExpressionException {
         if (!map.containsKey(key)) {
-            throw new KeyNotFoundException("Key not found");
+            throw new ExpressionException("Key not found");
         }
        map.remove(key);
     }
