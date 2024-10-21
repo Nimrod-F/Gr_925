@@ -1,6 +1,9 @@
 package model.types;
 
-public class BoolType implements IType{
+import model.values.BoolValue;
+import model.values.IValue;
+
+public class BoolType implements IType {
     public boolean equals(IType other) {
         return other instanceof BoolType;
     }
@@ -8,5 +11,9 @@ public class BoolType implements IType{
     @Override
     public String toString() {
         return "Boolean";
+    }
+
+    public IValue defaultValue() {
+        return new BoolValue(false);
     }
 }

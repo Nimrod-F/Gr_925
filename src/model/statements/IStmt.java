@@ -6,4 +6,6 @@ import model.state.ProgramState;
 
 public interface IStmt {
     ProgramState execute(ProgramState state) throws StatementException, ExpressionException;
+
+    IStmt deepCopy();
 }

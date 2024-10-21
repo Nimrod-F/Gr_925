@@ -7,7 +7,7 @@ import model.state.ProgramState;
 import model.types.IType;
 import model.values.IValue;
 
-public class AssignStmt implements IStmt{
+public class AssignStmt implements IStmt {
     private String variable;
     private IExpression exp;
 
@@ -21,7 +21,6 @@ public class AssignStmt implements IStmt{
             throw new ExpressionException("The variable is not defined.");
         }
 
-
         IValue evalValue = this.exp.evaluate(state.getSymTable());
         IType type = state.getSymTable().get(this.variable).getType();
 
@@ -34,7 +33,12 @@ public class AssignStmt implements IStmt{
         return state;
     }
 
-    public String toString(){
+    @Override
+    public IStmt deepCopy() {
+        return new AssignStmt(variable, exp.deepCopy());
+    }
+
+    public String toString() {
         return variable + " = " + exp.toString();
     }
 }

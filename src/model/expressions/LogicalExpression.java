@@ -27,7 +27,7 @@ public class LogicalExpression implements IExpression {
         var leftExpression = expression1.evaluate(symTable);
         var rightExpression = expression2.evaluate(symTable);
 
-        if(!leftExpression.getType().equals(new BoolType()) || !rightExpression.getType().equals(new BoolType())) {
+        if (!leftExpression.getType().equals(new BoolType()) || !rightExpression.getType().equals(new BoolType())) {
             throw new ExpressionException("Left and right expressions are not the same");
         }
         if (operation == LogicalOperation.AND) {
@@ -36,5 +36,10 @@ public class LogicalExpression implements IExpression {
             return new BoolValue(((BoolValue) leftExpression).getValue() && ((BoolValue) rightExpression).getValue());
         }
 
+    }
+
+    @Override
+    public IExpression deepCopy() {
+        return new LogicalExpression(expression1.deepCopy(), expression2.deepCopy(), operation);
     }
 }
